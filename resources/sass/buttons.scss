@@ -1,0 +1,105 @@
+/**********************************
+***         BASE BUTTON         ***
+***********************************/
+
+.btn {
+  display: inline-block;
+  border: solid 1px #d6d6d6;
+  padding: 10px 20px;
+  border-radius: 5px;
+  background: #eaeaea linear-gradient(-180deg,#fafbfc,#eff3f6 90%);
+  cursor: pointer;
+  color: #424242;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background: #eaeaea linear-gradient(-180deg, #f4f5f6, #e9edf0 90%);
+}
+
+.btn:active {
+  background: #e1e1e1 linear-gradient(-180deg, #ecedee, #dee2e5 90%);
+  border-color: #bcbcbc;
+  outline: 0;
+}
+
+.btn.disabled, .btn:disabled {
+  cursor: not-allowed;
+  color: #a1a1a1;
+}
+
+.btn i {
+  margin-right: 8px;
+}
+
+.btn.small {
+  font-size: 80%;
+  padding: 7px 13px;
+}
+
+/**********************************
+***       SUCCESS BUTTON        ***
+***********************************/
+
+.btn.success {
+  border-color: #2e8047;
+  background: #37a059 linear-gradient(-180deg, #37a059, #349351 90%);
+  color: white;
+}
+
+.btn.success:hover {
+  background: #349956 linear-gradient(-180deg, #349956, #318b4d 90%);
+}
+
+.btn.success:active {
+  background: #319253 linear-gradient(-180deg, #319253, #2b7d45 90%);
+  border-color: #246538;
+}
+
+.btn.success:disabled, .btn.success.disabled {
+  background: #cbcbcb;
+  border-color: #cbcbcb
+}
+
+.btn.success:hover:disabled, .btn.success.disabled:hover {
+  background: #cbcbcb;
+}
+
+.btn.success:active:disabled, .btn.success.disabled:active {
+  background: #cbcbcb;
+  border-color: #cbcbcb;
+}
+
+/**********************************
+***       PRIMARY BUTTON        ***
+***********************************/
+
+.btn.primary {
+  border-color: #4599dc;
+  background: #4aa5ed linear-gradient(-180deg, #4aa5ed, #479ce1 90%);
+  color: white;
+}
+
+.btn.primary:hover {
+  background: #479ee3 linear-gradient(-180deg, #479ee3, #4494d6 90%);
+}
+
+.btn.primary:active {
+  background: #4498da linear-gradient(-180deg, #4498da, #408cca 90%);
+  border-color: #387eb4;
+}
+
+.btn.primary:disabled {
+  background: #cbcbcb;
+  border-color: #cbcbcb
+}
+
+.btn.primary:hover:disabled {
+  background: #cbcbcb;
+}
+
+.btn.primary:active:disabled {
+  background: #cbcbcb;
+  border-color: #cbcbcb;
+}

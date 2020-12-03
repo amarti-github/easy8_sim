@@ -1,0 +1,219 @@
+// Variables
+@import "variables";
+
+@import "buttons";
+
+html, body {
+  background-color: #f5f5f5;
+  font-family: 'Open Sans', Helvetica, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+header {
+  text-align: center;
+  position: fixed;
+  top: 0;
+  height: 40px;
+  line-height: 40px;
+  color: white;
+  background-color: #327bda;
+  padding-left: 10px;
+  width: 100%;
+  z-index: 10000;
+  font-weight: bold;
+  font-size: 120%;
+  letter-spacing: 1px;
+  box-shadow: 0px 0px 6px -1px rgba(0,0,0,0.75);
+}
+
+.lshadow {
+  box-shadow: 0px 0px 6px -2px rgba(0,0,0,0.75);
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.about-button {
+  float: right;
+  line-height: 40px;
+  margin: 0 15px;
+}
+
+/*****************************************
+***            MAIN MENU               ***
+*****************************************/
+
+.main-menu {
+  position: fixed;
+  background-color: white;
+  width: 250px;
+  z-index: 5000;
+  height: 100%;
+  padding-top: 40px;
+  box-shadow: 0px 0px 6px -2px rgba(0,0,0,0.75);
+}
+
+.main-menu .section {
+  margin-top: 25px;
+  padding: 10px 10px 5px 10px;
+  text-transform: uppercase;
+  color: #727272;
+  font-size: 70%;
+  border-top: solid 1px #dadada;
+  letter-spacing: 1px;
+}
+
+.main-menu .section.no-sep {
+  border-top: none;
+  margin-top: 5px;
+}
+
+.main-menu ul {
+  margin: 0px;
+  padding: 0px;
+  list-style-image: none;
+}
+
+.main-menu ul li a {
+  color: #363636;
+  padding: 5px 10px;
+  display: inline-block;
+  text-decoration: none;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 100%;
+}
+
+.main-menu ul li a i {
+  margin-right: 10px;
+}
+
+.main-menu ul li a:hover {
+  background-color: #f5f5f5;
+}
+
+.working-area {
+  width: calc(100%);
+  padding: 40px 0px 0px 250px;
+}
+
+.main-menu ul ul {
+  margin-left: 5px;
+  font-size: 95%;
+}
+
+/*****************************************
+***              FORMS                 ***
+*****************************************/
+
+.input-block label {
+  display: block;
+  color: #535353;
+  margin-bottom: 3px;
+}
+
+.input-block .input {
+  border: solid 1px #cacaca;
+  border-left: solid 4px #a7a7a7;
+  outline: none;
+  transition: border-left 0.2s;
+  box-sizing: border-box;
+}
+
+.input-block .input:focus {
+  border-left: solid 4px #3480e4;
+}
+
+.input-block .wide {
+  width: 100%;
+}
+
+.input-block .big {
+  font-size: 130%;
+  padding: 5px;
+}
+
+/*****************************************
+***             MODAL                  ***
+*****************************************/
+
+.modal {
+  position: fixed;
+  width: 500px;
+  max-width: 100%;
+  background-color: white;
+  top: 100px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  box-shadow: 0px 0px 3px -1px rgba(0,0,0,0.75);
+  z-index: 10001;
+  border: solid 1px #D1D1D1;
+  display: none;
+}
+
+.modal.visible {
+  display: block;
+  animation-name: entry-animation;
+  animation-duration: 0.2s;
+}
+
+.modal h2 {
+  font-size: 120%;
+  color: #616161;
+  /*background-color: #f6f6f6;*/
+  padding: 15px;
+  font-weight: normal;
+  margin: 0;
+  border-top: solid 5px #1e7fce;
+  border-bottom: solid 1px #e9e9e9;
+}
+
+.modal form, .modal .content {
+  padding: 15px;
+}
+
+.modal .input-block {
+  margin-bottom: 15px;
+}
+
+.modal .separator h3 {
+  font-weight: bold;
+  background-color: white;
+  display: inline-block;
+  color: #777777;
+  margin: 0 0 0 10px;
+  padding: 0 5px;
+  text-transform: uppercase;
+  font-size: 90%;
+}
+
+.modal .separator hr {
+  position: relative;
+  top: -1.1em;
+  border: solid 1px #e7e7e7;
+  z-index: -1;
+}
+
+.about-modal h4 {
+  font-size: 100%;
+  color: #525252;
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+}
+
+.about-modal h3 {
+  font-size: 90%;
+}
+
+.about-modal .year {
+  text-align: right;
+  font-size: 80%;
+  color: #525252;
+  text-transform: uppercase;
+}
