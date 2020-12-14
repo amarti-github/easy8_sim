@@ -41,7 +41,7 @@ export default class Registers {
   get(reg) {
     return this.regs[reg.toLowerCase()];
   }
-  
+
   set(reg, value) {
     this.regs[reg.toLowerCase()] = value;
     console.log(reg, value);
@@ -50,13 +50,13 @@ export default class Registers {
       this.onUpdateCallback(reg, value);
     }
   }
-  
+
   incr(reg, value) {
     if (value == undefined) value = 1;
     var newValue = ALU.sum(this.get(reg), value, 8);
     this.set(reg, newValue.result);
   }
-  
+
   decr(reg, value) {
     if (value == undefined) value = 1;
     this.incr(reg, -value);
@@ -70,9 +70,10 @@ export default class Registers {
 
   decrUpdatingFlags(reg, value) {
     if (value == undefined) value = 1;
-    this.incrUpdatingFlags(reg, -value);
+    var newValue = ALU.decrUpdatingFlags(this.get(reg), value, 8, this);
+    this.set(reg, newValue.result);
   }
-  
+
   updateZero(reg) {
     if ('ra' === reg.toLowerCase()) {
       if (this.get('RA') === 0) {
@@ -83,13 +84,13 @@ export default class Registers {
       }
     }
   };
-  
+
   updateCarry(reg, carry) {
     if ('ra' === reg.toLowerCase()) {
       this.set('C', carry);
     }
   }
-  
+
   updateNegative(reg) {
     if ('ra' === reg.toLowerCase()) {
       this.set('N', ALU.isNegative(this.get('RA'), 8) ? 1 : 0);
@@ -97,15 +98,13 @@ export default class Registers {
   }
 
   updateOverflow(reg, operand1, operand2, result, bits) {
-    if ('ra' == reg.toLowerCase()) {
-      this.set('V', ALU.overflowed(operand1, operand2, result, bits) ? 1 : 0);
-    }
+    //No debería entrar nunca aquí
   }
-  
+
   print() {
     console.log('RA: ' + this.get('RA'));
   }
-  
+
   toString() {
     var str = '';
     str = str.concat('RA\t' + ALU.ca2ToInt(this.get('RA'), 8) + '\n');
@@ -116,7 +115,7 @@ export default class Registers {
     str = str.concat('N\t' + this.get('N') + '\n');
     return str;
   }
-  
+
   onUpdate(func) {
     this.onUpdateCallback = func;
   }
