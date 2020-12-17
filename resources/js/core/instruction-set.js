@@ -225,7 +225,7 @@ export default [
     assembly: assemblyRules.valueDirAssembly,
     run: function (memory, registers, io, environment) {
       var target = environment.nextByte();
-      if ( (registers.get('Z') === 1) && (!registers.get('V'))) {
+      if ( (registers.get('Z') === 1) ) {
         registers.set('PC', target - 1);
       }
     }
