@@ -158,7 +158,7 @@ export default [
     assembly: assemblyRules.raValueAssembly,
     run: function (memory, registers, io, environment) {
       var val = environment.nextByte();
-      ALU.sumUpdatingFlags(registers.get('RA'), -val, 8, registers);
+      ALU.decrUpdatingFlags(registers.get('RA'), val, 8, registers);
     }
   },
   {
@@ -167,7 +167,7 @@ export default [
     assembly: assemblyRules.raValueAssembly,
     run: function (memory, registers, io, environment) {
       var val = memory.readAddress(environment.nextByte());
-      ALU.sumUpdatingFlags(registers.get('RA'), -val, 8, registers);
+      ALU.decrUpdatingFlags(registers.get('RA'), val, 8, registers);
     }
   },
   {
@@ -196,10 +196,16 @@ export default [
     run: function (memory, registers, io, environment) {
       var target = environment.nextByte();
 
-      if (registers.get('N')) {
+     // if ( (registers.get('N')) && (!registers.get('V'))){ //Si el resultado es negativo sin desbordamiento
+     //   registers.set('PC', target - 1);
+     // }
+	 // if ( (!registers.get('N')) && (registers.get('V'))){ //Si el resultado es positivo pero hay desbordamiento
+     //   registers.set('PC', target - 1);
+	 // }
+	 if  (registers.get('NV')) { //Flag NV es la or exclusiva de N y V
         registers.set('PC', target - 1);
       }
-    }
+    } 
   },
   {
     mnemonic: 'JGREATER',
@@ -208,7 +214,7 @@ export default [
     run: function (memory, registers, io, environment) {
       var target = environment.nextByte();
 
-      if (!registers.get('N') && !registers.get('Z')) {
+      if (!registers.get('NV') && !registers.get('Z')) { //Flag NV es la or exclusiva de N y V
         registers.set('PC', target - 1);
       }
     }
@@ -219,7 +225,7 @@ export default [
     assembly: assemblyRules.valueDirAssembly,
     run: function (memory, registers, io, environment) {
       var target = environment.nextByte();
-      if (registers.get('Z') === 1) {
+      if ( (registers.get('Z') === 1) ) {
         registers.set('PC', target - 1);
       }
     }

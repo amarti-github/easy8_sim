@@ -898,34 +898,34 @@
               <div class="title">Flags</div>
               <div class="register">
                 <h2>Z</h2>
-                <div class="value">{{ registers.z | format(numericFormat) }}</div>
+                <div class="value">{{ registers.z | format('decimal-unsigned') }}</div>
               </div>
 
               <div class="register">
                 <h2>N</h2>
-                <div class="value">{{ registers.n | format(numericFormat) }}</div>
+                <div class="value">{{ registers.n | format('decimal-unsigned') }}</div>
               </div>
 
               <div class="register">
                 <h2>C</h2>
-                <div class="value">{{ registers.c | format(numericFormat) }}</div>
+                <div class="value">{{ registers.c | format('decimal-unsigned') }}</div>
               </div>
 
               <div class="register">
                 <h2>V</h2>
-                <div class="value">{{ registers.v | format(numericFormat) }}</div>
+                <div class="value">{{ registers.v | format('decimal-unsigned') }}</div>
               </div>
 
               <div class="register">
                 <h2>N⊕V</h2>
-                <div class="value">{{ registers.nv | format(numericFormat) }}</div>
+                <div class="value">{{ registers.nv | format('decimal-unsigned') }}</div>
               </div>
             </div>
           </div>
         </div>
         <div class="simulator-row memory-displays">
           <div class="memory code">
-            <h2>Memoria de código</h2>
+            <h2>Memoria: vista de código</h2>
             <div class="scroll">
               <div v-if="memory" v-for="(entry, index) in memory" ref="codeMemory" class="entry" :class="{ highlight: index == registers.pc }">
                 <span class="address"> {{ index | format('hex') }}</span>
@@ -936,7 +936,7 @@
           </div>
 
           <div class="memory data">
-            <h2>Memoria de datos</h2>
+            <h2>Memoria: vista de datos</h2>
             <div class="scroll">
               <div v-if="memory" v-for="(entry, index) in memory" ref="dataMemory" class="entry" :class="{ highlight: index == lastModifiedMemoryAddress }">
                 <span class="address"> {{ index | format('hex') }}</span> <span class="value">{{ entry | format(numericFormat) }}</span>
@@ -945,7 +945,7 @@
           </div>
 
           <div class="memory heap">
-            <h2>Memoria de pila</h2>
+            <h2>Memoria: vista de pila</h2>
             <div class="scroll">
               <div v-if="memory" v-for="(entry, index) in memory" ref="stackMemory" class="entry" :class="{ highlight: index == registers.sp }">
                 <span class="address"> {{ index | format('hex') }}</span> <span class="value">{{ entry | format(numericFormat) }}</span>
@@ -1028,7 +1028,8 @@ export default {
       }
       else if (format == 'bin') {
 
-        return '0b' + padStart(value.toString(2), 8);
+        //return '0b' + padStart(value.toString(2), 8);
+        return padStart(value.toString(2), 8);
       }
       else {
         return 'UNKNOWN';
@@ -1446,6 +1447,18 @@ export default {
     background-color: white;
     margin: 10px;
     flex-basis: 25%;
+    /*overflow-y: auto;*/
+    display: flex;
+    flex-direction: column;
+  }
+
+   .memory-displays .memory_ancha {
+    flex-grow: 1;
+    border: solid 1px #cbcbcb;
+    background-color: white;
+    margin: 10px;
+    flex-basis: 40%;
+	font-size: 50%;
     /*overflow-y: auto;*/
     display: flex;
     flex-direction: column;

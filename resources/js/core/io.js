@@ -33,8 +33,8 @@ export default class IO {
     var value = this.ports[port];
 
     // Las especificaciones del simulador requieren que, al leer el
-    // puerto el botón rojo, se resetee su valor.
-    if (port == IODevices.K_BUTTON) {
+    // puerto del teclado, el botón rojo resetee su valor.
+    if (port == IODevices.KEYBOARD) {
       this.writePort(IODevices.K_BUTTON, 0);
     }
 
